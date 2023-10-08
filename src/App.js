@@ -1,39 +1,18 @@
 import "./App.css";
 
+const age = 15;
+age >= 18 ? console.log("text") : console.log("something else");
+
 function App() {
+  const age = 19;
+  const isGreen = true;
+
   return (
     <div className="App">
-      <User name="Jonathan" age="34" email="random@test.com" />
-      <User name="temp" age="temp" email="temp@test.com" />
-
-      <Job
-        salary={40000}
-        position="Software Developer"
-        company="Temp Company"
-      />
-      <Job salary={60000} position="Software Developer" company="Optum" />
+      {age >= 18 ? <h1>Over Age</h1> : <h1>Under Age</h1>}
+      <h1 style={{ color: isGreen ? "green" : "red" }}>THIS HAS COLOR</h1>
     </div>
   );
 }
-
-const User = (props) => {
-  return (
-    <div>
-      <h1>{props.name}</h1>
-      <h2>{props.age}</h2>
-      <h2>{props.email}</h2>
-    </div>
-  );
-};
-
-const Job = (props) => {
-  return (
-    <div>
-      <h1>{props.salary}</h1>
-      <h1>{props.position}</h1>
-      <h1>{props.company}</h1>
-    </div>
-  );
-};
 
 export default App;
