@@ -5,6 +5,7 @@ function App() {
   const [age, setAge] = useState(18);
   const [inputValue, setInputValue] = useState("");
   const [showText, setShowText] = useState(true);
+  const [textColor, setTextColor] = useState("black");
 
   const increaseAge = () => {
     setAge(age + 1);
@@ -20,6 +21,10 @@ function App() {
     setShowText(!showText);
   };
 
+  const toggleColorHandler = () => {
+    setTextColor(textColor === "black" ? "green" : "black");
+  };
+
   return (
     <div className="App">
       {age} <button onClick={increaseAge}> Increase Age </button>
@@ -27,7 +32,11 @@ function App() {
       {inputValue}
       <div>
         <button onClick={toggleNameHandler}>Show/Hide</button>
-        {showText === true && <h1>My name is Jonathan</h1>}
+        {showText === true && (
+          <h1 style={{ color: textColor }}>My name is Jonathan</h1>
+        )}
+
+        <button onClick={toggleColorHandler}>Toggle Color</button>
       </div>
     </div>
   );
