@@ -1,10 +1,5 @@
 import "./App.css";
-import {
-  BrowserRouter as BRouter,
-  Routes,
-  Route,
-  Link,
-} from "react-router-dom";
+import { BrowserRouter as BRouter, Routes, Route } from "react-router-dom";
 import { Home } from "./pages/Home";
 import { Menu } from "./pages/Menu";
 import { Context } from "./pages/Context";
