@@ -1,29 +1,28 @@
 import "./App.css";
-import { Form } from "./components/Form";
+import { useToggle } from "./hooks/useToggle";
+import { Cat } from "./components/Cat";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+
+// useState
+// useContext
+// useEffect
 
 function App() {
+  const [isVisible, toggle] = useToggle();
+  const [isVisible2, toggle2] = useToggle();
+
+  const client = new QueryClient();
+
   return (
-    <div className="App">
-      {/* <AppContext.Provider value={{ userName, setUserName }}>
-        <QueryClientProvider client={client}>
-          <BRouter>
-            <Navbar />
-            <div>{catFact}</div>
-            <button onClick={changeCatFact}>Change Cat Fact</button>
-            <Routes>
-              <Route path="/" element={<Home userName={userName} />} />
-              <Route
-                path="/profile"
-                element={<Profile userName={userName} />}
-              />
-              <Route path="/context" element={<Context />} />
-              <Route path="*" element={<h1>PAGE NOT FOUND</h1>} />
-            </Routes>
-          </BRouter>
-        </QueryClientProvider>
-      </AppContext.Provider> */}
-      <Form />
-    </div>
+    <QueryClientProvider client={client}>
+      <div className="App">
+        <button onClick={toggle}>{isVisible ? "Hide" : "Show"}</button>
+        {isVisible && <h1>Hidden Text</h1>}
+        <button onClick={toggle2}>{isVisible2 ? "Hide" : "Show"}</button>
+        {isVisible2 && <h1>Hidden Text 2</h1>}
+        <Cat />
+      </div>
+    </QueryClientProvider>
   );
 }
 
